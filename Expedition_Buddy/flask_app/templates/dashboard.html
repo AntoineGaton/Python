@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <script src="../static/js/maps.js"></script>
+    <title>Welcome To Expedition Buddy</title>
+</head>
+
+<body style="background: #ffee32; margin: auto; height: fit-content; width: fit-content;">
+    <div class="container">
+        <div style="display:flex; justify-content:center;">
+            <img src="https://i.ibb.co/CpdBk4Z/Expedition-Buddy-Logo.png" alt="Expedition-Buddy-Logo">
+        </div>
+        <div class="row" style="display: flex;margin: 10px;align-items: center;justify-content: center;">
+            <h1>Hello {{user.first_name}}!</h1>
+            <!-- <a class="btn btn-dark" style="margin-left: 10px;" href="/dashboard" role="button">Add Trip</a> -->
+            <button class="btn btn-dark" style="margin-left: 10px;" onclick="printFunction()">Print Directions</button>​
+            <a class="btn btn-dark" style="margin-left: 25px;" href="/logout" role="button">Logout</a>
+        </div>
+        <div class="row">
+            <div id="floating-panel">
+                <strong>Please choose two cities for directions:</strong>
+                <br>
+                <strong>Start:</strong>
+                <select id="start">
+                    <option value="cape coral, fl">Cape Coral</option>
+                    <option value="bronx, ny">Bronx</option>
+                    <option value="manhattan, ny">Manhattan</option>
+                    <option value="Effort, pa">Effort</option>
+                    <option value="miami, fl">Miami</option>
+                    <option value="Austin, tx">Austin</option>
+                    <option value="san francisco, ca">San Francisco</option>
+                    <option value="boston, ma">Boston</option>
+                    <option value="seattle, wa">Seattle</option>
+                    <option value="san diego, ca">San Diego</option>
+                    <option value="philadelphia, pa">Philadelphia</option>
+                    <option value="nashville, tn">Nashville</option>
+                    <option value="phoenix, az">Phoenix</option>
+                    <option value="chicago, il">Chicago</option>
+                    <option value="st louis, mo">St Louis</option>
+                    <option value="joplin, mo">Joplin, MO</option>
+                    <option value="oklahoma city, ok">Oklahoma City</option>
+                    <option value="amarillo, tx">Amarillo</option>
+                    <option value="gallup, nm">Gallup, NM</option>
+                    <option value="flagstaff, az">Flagstaff, AZ</option>
+                    <option value="winona, az">Winona</option>
+                    <option value="kingman, az">Kingman</option>
+                    <option value="barstow, ca">Barstow</option>
+                    <option value="san bernardino, ca">San Bernardino</option>
+                    <option value="los angeles, ca">Los Angeles</option>
+                </select>
+                <br />
+                <strong>End:</strong>
+                <select id="end">
+                    <option value="bronx, ny">Bronx</option>
+                    <option value="manhattan, ny">Manhattan</option>
+                    <option value="Effort, pa">Effort</option>
+                    <option value="miami, fl">Miami</option>
+                    <option value="Austin, tx">Austin</option>
+                    <option value="cape coral, fl">Cape Coral</option>
+                    <option value="san francisco, ca">San Francisco</option>
+                    <option value="boston, ma">Boston</option>
+                    <option value="seattle, wa">Seattle</option>
+                    <option value="san diego, ca">San Diego</option>
+                    <option value="philadelphia, pa">Philadelphia</option>
+                    <option value="nashville, tn">Nashville</option>
+                    <option value="phoenix, az">Phoenix</option>
+                    <option value="chicago, il">Chicago</option>
+                    <option value="st louis, mo">St Louis</option>
+                    <option value="joplin, mo">Joplin, MO</option>
+                    <option value="oklahoma city, ok">Oklahoma City</option>
+                    <option value="amarillo, tx">Amarillo</option>
+                    <option value="gallup, nm">Gallup, NM</option>
+                    <option value="flagstaff, az">Flagstaff, AZ</option>
+                    <option value="winona, az">Winona</option>
+                    <option value="kingman, az">Kingman</option>
+                    <option value="barstow, ca">Barstow</option>
+                </select>
+            </div>
+            <div id="container">
+                <div id="map"></div>
+                <div id="sidebar"></div>
+            </div>
+</body>
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQCSRIce6RRPR6o65M4RT-GdT325x3ka0&callback=initMap&v=weekly"
+    async></script>
+    
+    <script>//SCRIPT TO CALL 
+        function printFunction() { 
+            window.print(); //The print() method prints the contents of the current window.
+        }
+    </script>
+</html>
+<!-- 
+    google api key=
+    AIzaSyAQCSRIce6RRPR6o65M4RT-GdT325x3ka0 
+-->
