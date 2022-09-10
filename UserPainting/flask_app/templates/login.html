@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body form{
+            border: dashed 5px black;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Login Page</title>
+</head>
+<body class='container'> 
+<div class='row'>
+    <form action="/register" class='col bg-primary' method="post">
+        {% with messages = get_flashed_messages(category_filter=['register']) %}
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Alert!</strong>
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <h1 >Register</h1>
+        <label for="first_name">First Name: </label>
+        <input type="text" name="first_name" class="form-control">
+        <label for="last_name">Last Name: </label>
+        <input type="text" name="last_name" class="form-control">
+        <label for="email">Email: </label>
+        <input type="email" name="email" class="form-control">
+        <label for="password">Password: </label>
+        <input type="password" name="password" class="form-control"> 
+        <label for="confirm_password">Confirm Password: </label>
+        <input type="password" name="confirm_password" class="form-control">
+        <br>
+        <input type="submit" value="Register" class="form-control">       
+    </form>
+    <form action="/login" class='col bg-primary' method="post">
+        {% with messages = get_flashed_messages(category_filter=['login']) %}
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Alert!</strong>
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <h1>Login</h1>
+        <label for="email">Email: </label>
+        <input type="email" name="email" class="form-control">
+        <label for="password">Password: </label>
+        <input type="password" name="password" class="form-control">
+        <br>
+        <input type="submit" value="LogIn" class="form-control">
+    </form>
+</div>
+</body>
+</html>
