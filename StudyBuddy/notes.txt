@@ -1,0 +1,11 @@
+Starting Django Project
+- Create a new project folder.
+- cd into the project folder.
+- create a virtual enviorment with -> python -m virtualenv env
+- run virtualenv -> env\scripts\activate
+- install django within environment -> python -m pip install django
+- create a django project with -> django-admin startproject PROJECT_NAME
+- cd into django project folder
+- run server -> python manage.py runserver
+
+
