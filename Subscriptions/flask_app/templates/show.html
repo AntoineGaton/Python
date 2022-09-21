@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/show.css') }}">
+    <title>Show Magazine</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <nav>
+                <div>
+                    <li><a class="button" href="/new">Add Magazine</a></li>
+                    <li><a class="button" href="/dashboard">Dashboard</a></li>
+                    <li><a class="button" href="/user/account">Account</a></li>
+                    <li><a class="button" href="/logout">Logout</a></li>
+                </div>
+            </nav>
+        </div>
+        <div class="container2">
+            <h1 class="recipe-name">{{ magazine.title }}</h1>
+        </div>
+    </div>
+    <div class="sub-container">
+        <div>
+            <p>Added by {{ magazine.get_added_by_full_name() }}</p>
+        </div>
+        <div>
+            <label for="text">Description:</label>
+            <p>{{ magazine.description }}</p>
+        </div>
+        <div>
+            <label for="text">Subscribers:</label>
+            {% for user in magazine.get_subscribers() %}
+                <p>- {{ user.get_full_name() }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

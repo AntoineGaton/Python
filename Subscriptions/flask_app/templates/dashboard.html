@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/dashboard.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="sub-nav">
+            <h1>Welcome {{ full_name }}</h1>
+            <div class="container">
+                <nav>
+                    <ul class="top-nav">
+                        <li><a class="button" href="/new">Add Magazine</a></li>
+                        <li><a class="button" href="/user/account">Account</a></li>
+                        <li><a class="button" href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="title">
+            <h3>Magazines</h3>
+        </div>
+    </div>
+    <div class="container2">
+        {% for magazine in magazines %}
+            <div>
+                
+                {% if magazine.is_subscribed(session["user_id"]) %}
+                    <p><a href="/show/{{ magazine.id }}">{{ magazine.title }}</a> added by {{ magazine.get_added_by_full_name() }} <a href="/unsubscribe/{{ magazine.id }}">Unsubscribe</a></p>
+                {% else %}
+                    <p><a href="/show/{{ magazine.id }}">{{ magazine.title }}</a> added by {{ magazine.get_added_by_full_name() }} <a href="/subscribe/{{ magazine.id }}">Subscribe</a></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

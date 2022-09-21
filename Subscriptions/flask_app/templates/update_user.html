@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/register_login.css') }}">
+    <title>Register Login</title>
+</head>
+<body>
+    <div class="flex-box">
+        <nav>
+            <div>
+                <li><a class="button" href="/new">Add Magazine</a></li>
+                <li><a class="button" href="/dashboard">Dashboard</a></li>
+                <li><a class="button" href="/logout">Logout</a></li>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>Update User</h1>
+            {% with messages = get_flashed_messages(category_filter=["updated"]) %}
+    
+                {% if messages %}
+                    <div class="error1">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <div class="box1">
+                <form action="/user/update" method = "post">
+                    <div>
+                        <label>First Name:</label>
+                        <input type="text" name="first_name" value="{{ user.first_name }}" required>
+                    </div>
+                    <div>
+                        <label>Last Name:</label>
+                        <input type="text" name="last_name" value="{{ user.last_name }}" required>
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input type="text" name="email" value="{{ user.email }}" required>
+                    </div>
+                    <div>
+                        <button class="btn2" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container2">
+            <h1>User's Magazine</h1>
+            <div class="box2">
+                {% for magazine in user.get_magazines() %}
+                    <div>
+                        <p>{{ magazine.title }} <a href="/delete/{{ magazine.id }}">delete</a></p>
+                        <p>{{ magazine.get_num_subscribers() }} subscribers</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>

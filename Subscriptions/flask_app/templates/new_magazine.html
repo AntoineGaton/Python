@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/sighting.css') }}">
+    <title>New Magazine</title>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <h1>Add a Magazine</h1>
+            <nav>
+                <ul class="top-nav">
+                    <li><a class="button" href="/dashboard">Dashboard</a></li>
+                    <li><a class="button" href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="flex-box">
+        <div class="sub-container">
+            <form class="flex1" action="/add_magazine", method = "post">
+                <div class="box1">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="error1">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div>
+                        <label for="text">Title:</label>
+                        <input class="name-input" type="text" name="title" required>
+                    </div>
+                    <div>
+                        <label for="text">Description:</label>
+                        <textarea name="description" cols="60" rows="10" required></textarea>
+                    </div>
+                </div>
+                    <div>
+                        <button class="btn1" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

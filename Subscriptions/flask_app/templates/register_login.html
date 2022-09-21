@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/register_login.css') }}">
+    <title>Register Login</title>
+</head>
+<body>
+    <div class="flex-box">
+        <div class="container1">
+            <div class="sub-container1">
+                <form action="/register" method = "post">
+                    <h1 class="title1">Register</h1>
+                    {% if error %}
+                        <p class="error"><strong>Error:</strong> {{ error }}</p>
+                    {% endif %}
+    
+                    {% with messages = get_flashed_messages(category_filter=["register"]) %}
+    
+                        {% if messages %}
+                            <div class="error1">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+    
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div>
+                        <label>First Name:</label>
+                        <input type="text" name="first_name" required>
+                    </div>
+                    <div>
+                        <label>Last Name:</label>
+                        <input type="text" name="last_name" required>
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="email" id="" required>
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password" id="" required>
+                    </div>
+                    <div>
+                        <label>Confirm Password:</label>
+                        <input type="password" name="c_password" id="" required>
+                    </div>
+                    <div>
+                        <button class="btn1" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container2">
+            <div class="sub-container2">
+                <form action="/login" method = "post">
+                    <h1 class="title2">Login</h1>
+                    {% with messages = get_flashed_messages(category_filter=["login"]) %}
+    
+                        {% if messages %}
+                            <div class="error1">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+    
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="email" id="" required>
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password" id="" required>
+                    </div>
+                    <div>
+                        <button class="btn2" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
